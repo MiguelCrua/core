@@ -1,0 +1,20 @@
+{
+  "tool": "Built-in ImageGen",
+  "images": [
+    {
+      "name": "architect",
+      "path": "/Users/miguelcrua/.codex/generated_images/01a1685b-2cd6-7f41-9778-a73768ede030/exec-5a61d46d-21b2-4370-8f13-8b8a5a2ae6e1.png",
+      "prompt": "Edit this CORE editorial portrait to make the background substantially cleaner and quieter. Preserve the exact person, face, expression, pose, hands, clothing, framing, natural directional light, warm muted palette and photographic realism. Replace the busy environment with a simple warm greige plaster wall and very soft out-of-focus architectural light. Remove all shelves, wall pictures, plants, stacked objects, hanging tools, bottles and background equipment. Keep only the main counter or worktable and one essential professional prop already held or directly in use; remove scattered foreground clutter. Retain a subtle sense of a real workplace, not a cutout or studio backdrop. Background should be low-detail and low-contrast, subject remains crisp. No new objects, no text, no logos. Same portrait aspect ratio."
+    },
+    {
+      "name": "chef",
+      "path": "/Users/miguelcrua/.codex/generated_images/01a1685b-2cd6-7f41-9778-a73768ede030/exec-3bc285f6-eb34-4ce4-b14a-ba4f8f690345.png",
+      "prompt": "Edit this CORE editorial portrait to make the background substantially cleaner and quieter. Preserve the exact person, face, expression, pose, hands, clothing, framing, natural directional light, warm muted palette and photographic realism. Replace the busy environment with a simple warm greige plaster wall and very soft out-of-focus architectural light. Remove all shelves, wall pictures, plants, stacked objects, hanging tools, bottles and background equipment. Keep only the main counter or worktable and one essential professional prop already held or directly in use; remove scattered foreground clutter. Retain a subtle sense of a real workplace, not a cutout or studio backdrop. Background should be low-detail and low-contrast, subject remains crisp. No new objects, no text, no logos. Same portrait aspect ratio."
+    },
+    {
+      "name": "woodworker",
+      "path": "/Users/miguelcrua/.codex/generated_images/01a1685b-2cd6-7f41-9778-a73768ede030/exec-0af1a694-d2aa-4646-8553-d951b5ec6724.png",
+      "prompt": "Edit this CORE editorial portrait to make the background substantially cleaner and quieter. Preserve the exact person, face, expression, pose, hands, clothing, framing, natural directional light, warm muted palette and photographic realism. Replace the busy environment with a simple warm greige plaster wall and very soft out-of-focus architectural light. Remove all shelves, wall pictures, plants, stacked objects, hanging tools, bottles and background equipment. Keep only the main counter or worktable and one essential professional prop already held or directly in use; remove scattered foreground clutter. Retain a subtle sense of a real workplace, not a cutout or studio backdrop. Background should be low-detail and low-contrast, subject remains crisp. No new objects, no text, no logos. Same portrait aspect ratio."
+    }
+  ]
+}

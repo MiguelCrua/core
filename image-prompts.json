@@ -1,0 +1,20 @@
+{
+  "tool": "Built-in ImageGen",
+  "images": [
+    {
+      "path": "/Users/miguelcrua/.codex/generated_images/01a1685b-2cd6-7f41-9778-a73768ede030/exec-3a611f6c-1ef2-4505-a8af-a034dfb2fee5.png",
+      "name": "architect",
+      "prompt": "Use case: photorealistic-natural. Asset type: individual photograph for CORE wellbeing and professional alignment website hero. Portrait of a male architect aged 40, dark curly hair, olive work shirt, quietly reviewing a rolled plan at a wooden studio table. Framed waist up, head and hands visible near center. Art direction: intimate candid European editorial portrait, calm introspective pause, naturally imperfect skin, soft directional window daylight, muted warm grey, taupe and earth palette, deep soft shadows, restrained analog film grain, realistic documentary photograph. Portrait 3:4 composition, centered subject with generous environment around them for adaptable horizontal and vertical website crops. Single person and scene, no collage, no text, no logos, no watermark. Avoid commercial stock-photo smiles, saturated colors and glossy retouching."
+    },
+    {
+      "path": "/Users/miguelcrua/.codex/generated_images/01a1685b-2cd6-7f41-9778-a73768ede030/exec-bae12504-ae0c-40e6-a737-d4b0b1ed2786.png",
+      "name": "chef",
+      "prompt": "Use case: photorealistic-natural. Asset type: individual photograph for CORE wellbeing and professional alignment website hero. Portrait of a female chef aged 45, short dark hair, off-white cotton chef jacket, quietly resting beside a stainless counter in a small kitchen between tasks. Framed waist up, head and hands near center. Art direction: intimate candid European editorial portrait, calm introspective pause, naturally imperfect skin, soft directional window daylight, muted warm grey, taupe and earth palette, deep soft shadows, restrained analog film grain, realistic documentary photograph. Portrait 3:4 composition, centered subject with generous environment around them for adaptable horizontal and vertical website crops. Single person and scene, no collage, no text, no logos, no watermark. Avoid commercial stock-photo smiles, saturated colors and glossy retouching."
+    },
+    {
+      "path": "/Users/miguelcrua/.codex/generated_images/01a1685b-2cd6-7f41-9778-a73768ede030/exec-3d9bd968-5ec2-41c1-b7aa-f181ce59e322.png",
+      "name": "woodworker",
+      "prompt": "Use case: photorealistic-natural. Asset type: individual photograph for CORE wellbeing and professional alignment website hero. Portrait of a Black male furniture maker aged 35, beige linen shirt, standing quietly at a wooden workbench in a modest joinery studio. Framed waist up, head and hands near center. Art direction: intimate candid European editorial portrait, calm introspective pause, naturally imperfect skin, soft directional window daylight, muted warm grey, taupe and earth palette, deep soft shadows, restrained analog film grain, realistic documentary photograph. Portrait 3:4 composition, centered subject with generous environment around them for adaptable horizontal and vertical website crops. Single person and scene, no collage, no text, no logos, no watermark. Avoid commercial stock-photo smiles, saturated colors and glossy retouching."
+    }
+  ]
+}
