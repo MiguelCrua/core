@@ -16,7 +16,7 @@
   document.body.classList.add('gsap-motion');
   let closed = false;
   // Keep the complete text accessible; split only its decorative visual copy.
-  const textTargets = document.querySelectorAll('h2[data-reveal], .service h3[data-reveal], .service-note, .copy p, .hero-caption p');
+  const textTargets = document.querySelectorAll('h2[data-reveal], .service h3[data-reveal], .service-note, .copy p, .contact-label, .contact-value, .hero-caption p');
   textTargets.forEach(target => {
     const text = target.innerText;
     const visual = document.createElement('span');
