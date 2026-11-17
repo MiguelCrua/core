@@ -6,3 +6,6 @@ __pycache__/
 !.env.example
 .openai/
 *.log
+.cloudflare-assets/
+.wrangler/
+.dev.vars
