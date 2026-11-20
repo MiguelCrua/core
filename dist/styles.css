@@ -246,3 +246,6 @@ body:not(.ready) .hero .photo-inner{translate:0 25%}
  .hero .photo.b{width:min(140px,34vw)}
  .hero .photo.e{width:min(108px,26vw);height:min(132px,15svh);bottom:88px}
 }
+
+.workbook-cover-photo{aspect-ratio:390/398;transform:scaleX(-1)}
+.workbook-cover-photo img{width:99.89%;height:130.87%;left:.11%;top:.06%}
