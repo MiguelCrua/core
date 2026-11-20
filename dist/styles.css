@@ -236,3 +236,5 @@ body:not(.ready) .hero .photo-inner{translate:0 25%}
 .workbook-cover-photo img{position:absolute;width:104.46%;height:155.28%;max-width:none;left:-4.46%;top:-22.22%}
 .workbook-download{background:var(--paper);color:var(--ink)}
 @media(max-width:420px){.workbook-cover-top img:first-child{width:40px;height:auto}.workbook-cover-top img:last-child{width:150px;height:auto}}
+/* Absolute letter layers need an explicit ratio when the mobile mark uses height:auto. */
+.hero .wordmark{height:auto;aspect-ratio:384/112}
