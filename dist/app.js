@@ -81,10 +81,13 @@
   const footer = document.querySelector('.footer-inner');
   const footerMono = footer.querySelector('.footer-rise');
   const footerLetters = footer.querySelectorAll('.footer-glyph');
+  const footerSocials = footer.querySelectorAll('.footer-socials a');
+  gsap.set([...footerSocials], { y: 16, opacity: 0 });
   gsap.set([footerMono, ...footerLetters], { yPercent: 110, opacity: 0 });
   gsap.timeline({ scrollTrigger: { trigger: footer, start: 'top 94%', once: true } })
     .to(footerMono, { yPercent: 0, opacity: 1, duration: .75, ease: 'expo.out' }, 0)
-    .to(footerLetters, { yPercent: 0, opacity: 1, duration: .75, stagger: .08, ease: 'expo.out' }, .12);
+    .to(footerLetters, { yPercent: 0, opacity: 1, duration: .75, stagger: .08, ease: 'expo.out' }, .12)
+    .to(footerSocials, { y: 0, opacity: 1, duration: .75, stagger: .08, ease: 'expo.out' }, .12);
 
   gsap.set(letters, { yPercent: 115 });
   gsap.set(photos, { clipPath: 'inset(100% 0% 0% 0%)' });
@@ -136,11 +139,13 @@
     gsap.set(photos, { x: 0, y: 0, clipPath: 'inset(0% 0% 0% 0%)' });
     gsap.set('.photo-inner', { yPercent: 0 });
     gsap.set('.motion-char,.footer-rise,.footer-glyph', { yPercent: 0, opacity: 1 });
+    gsap.set(footerSocials, { y: 0, opacity: 1 });
     gsap.set('.placeholder', { clipPath: 'inset(0% 0% 0% 0%)' });
     gsap.set('.workbook-cover', { y: 0, opacity: 1 });
     showStatic();
   });
   footer.addEventListener('focusin', () => {
+    gsap.to(footerSocials, { y: 0, opacity: 1, duration: .3, overwrite: true });
     gsap.to([footerMono, ...footerLetters], { yPercent: 0, opacity: 1, duration: .3, overwrite: true });
   });
 })();
