@@ -230,3 +230,9 @@ body:not(.ready) .hero .photo-inner{translate:0 25%}
 .footer-socials a{color:#000;font-family:'CC Timeline High Trial',Arial,Helvetica,sans-serif;font-size:24px;font-weight:400;line-height:67px;text-transform:uppercase;text-decoration:none}
 .footer-socials a:hover{text-decoration:underline;text-underline-offset:5px}
 @media(max-width:600px){.footer-socials{gap:24px;min-height:54px}.footer-socials a{font-size:16px;line-height:54px}}
+
+.workbook-cover{background:#1b1b1b;color:#545d4d}
+.workbook-cover-photo{position:relative;width:100%;aspect-ratio:390/393;overflow:hidden}
+.workbook-cover-photo img{position:absolute;width:104.46%;height:155.28%;max-width:none;left:-4.46%;top:-22.22%}
+.workbook-download{background:var(--paper);color:var(--ink)}
+@media(max-width:420px){.workbook-cover-top img:first-child{width:40px;height:auto}.workbook-cover-top img:last-child{width:150px;height:auto}}
