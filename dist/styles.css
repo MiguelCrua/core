@@ -238,3 +238,11 @@ body:not(.ready) .hero .photo-inner{translate:0 25%}
 @media(max-width:420px){.workbook-cover-top img:first-child{width:40px;height:auto}.workbook-cover-top img:last-child{width:150px;height:auto}}
 /* Absolute letter layers need an explicit ratio when the mobile mark uses height:auto. */
 .hero .wordmark{height:auto;aspect-ratio:384/112}
+/* Slightly larger mobile portraits, preserving the central mark and caption band. */
+@media(max-width:600px){
+ .hero .photo.d{width:min(144px,35vw);height:min(122px,17svh)}
+ .hero .photo.a{width:min(106px,26vw);height:min(128px,18svh)}
+ .hero .photo.c{width:min(142px,34vw);height:min(118px,14svh)}
+ .hero .photo.b{width:min(140px,34vw)}
+ .hero .photo.e{width:min(108px,26vw);height:min(132px,15svh);bottom:88px}
+}
