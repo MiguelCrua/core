@@ -1,5 +1,5 @@
 (() => {
-  const items = [...document.querySelectorAll('.service-accordion')];
+  const items = [...document.querySelectorAll('.service-accordion, .founder-accordion')];
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
   if (!window.gsap) return;
   const states = new WeakMap();
@@ -10,8 +10,9 @@
     previous?.tween.kill();
     const start = item.getBoundingClientRect().height;
     // Control the exclusive group ourselves so its previous panel can animate closed.
+    if (item.classList.contains('founder-accordion')) item.querySelector('summary > span').textContent = opening ? 'Mostrar menos' : 'Ler mais';
     if (opening) {
-      items.filter(other => other !== item && other.open).forEach(other => animate(other, false));
+      items.filter(other => other !== item && other.open && item.classList.contains('service-accordion') && other.classList.contains('service-accordion')).forEach(other => animate(other, false));
       item.open = true;
     }
     const summaryHeight = item.querySelector('summary').getBoundingClientRect().height;
@@ -26,6 +27,9 @@
       item.style.removeProperty('overflow');
       gsap.set(content, { clearProps: 'opacity' });
       states.delete(item);
+      if (item.classList.contains('founder-accordion')) {
+        item.querySelector('summary').focus({ preventScroll: true });
+      }
       window.ScrollTrigger?.refresh();
     };
     if (reduced.matches) { finish(); return; }

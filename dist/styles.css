@@ -249,3 +249,19 @@ body:not(.ready) .hero .photo-inner{translate:0 25%}
 
 .workbook-cover-photo{aspect-ratio:390/398;transform:scaleX(-1)}
 .workbook-cover-photo img{width:99.89%;height:130.87%;left:.11%;top:.06%}
+
+/* Founder: top-aligned portrait and expandable biography. */
+.founder .columns{align-items:start}
+.founder .placeholder{align-self:start;margin-block:0}
+.founder-accordion{margin-top:28px}
+.founder-accordion summary{display:flex;align-items:center;justify-content:space-between;gap:24px;list-style:none;cursor:pointer;padding:16px 0;border:0}
+.founder-accordion summary::-webkit-details-marker{display:none}
+.founder-accordion summary:focus-visible{outline:2px solid currentColor;outline-offset:5px}
+.founder-accordion .service-toggle{margin-top:0;flex:none}
+.founder-accordion[open] .service-toggle::after{transform:rotate(0)}
+.founder-accordion .service-content{margin:12px 0 0;font-size:inherit;line-height:inherit}
+
+.founder-accordion[open]{display:flex;flex-direction:column}
+.founder-accordion[open]::details-content{display:contents}
+.founder-accordion[open] summary{order:2;margin-top:28px}
+.founder-accordion .service-content{order:1}
