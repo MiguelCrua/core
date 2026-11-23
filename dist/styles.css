@@ -275,3 +275,6 @@ body:not(.ready) .hero .photo-inner{translate:0 25%}
 
 .founder .founder-portrait{aspect-ratio:894/1031;overflow:hidden;background:transparent}
 .founder-portrait img{display:block;width:100%;height:100%;object-fit:cover}
+
+.founder .founder-portrait{background:var(--paper);isolation:isolate}
+.founder-portrait img{mix-blend-mode:multiply}
