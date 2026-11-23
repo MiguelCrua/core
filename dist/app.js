@@ -5,11 +5,20 @@
   const hero = document.querySelector('.hero');
   const photos = [...document.querySelectorAll('.hero .photo')];
   const letters = document.querySelectorAll('.wordmark .loader-letter');
+  // A viewport layer keeps the intro visible when the browser restores a lower section.
+  const loaderMark = document.createElement('div');
+  loaderMark.className = 'loading-wordmark';
+  loaderMark.setAttribute('aria-hidden', 'true');
+  loaderMark.append(document.querySelector('.wordmark .logo-letters').cloneNode(true));
+  document.body.append(loaderMark);
+  const overlayLetters = loaderMark.querySelectorAll('.loader-letter');
+  const letterPairs = [...letters].map((letter, i) => [letter, overlayLetters[i]]);
   const gsap = window.gsap;
   const ScrollTrigger = window.ScrollTrigger;
   const showStatic = () => {
     document.body.classList.add('ready');
     loader.hidden = true;
+    loaderMark.remove();
   };
   if (!gsap || !ScrollTrigger || reduced.matches) { showStatic(); return; }
   gsap.registerPlugin(ScrollTrigger);
@@ -89,21 +98,23 @@
     .to(footerLetters, { yPercent: 0, opacity: 1, duration: .75, stagger: .08, ease: 'expo.out' }, .12)
     .to(footerSocials, { y: 0, opacity: 1, duration: .75, stagger: .08, ease: 'expo.out' }, .12);
 
-  gsap.set(letters, { yPercent: 115 });
+  gsap.set([...letters, ...overlayLetters], { yPercent: 115 });
   gsap.set(photos, { clipPath: 'inset(100% 0% 0% 0%)' });
   gsap.set('.photo-inner', { yPercent: 25 });
   const intro = gsap.timeline();
   intro.to(letters, { yPercent: 0, duration: .9, ease: 'expo.out', stagger: .06 })
+    .to(overlayLetters, { yPercent: 0, duration: .9, ease: 'expo.out', stagger: .06 }, 0)
     .addLabel('second', '+=.35');
-  [...letters].forEach((letter, i) => {
+  letterPairs.forEach((letter, i) => {
     const start = 1.43 + i * .06;
     intro.to(letter, { yPercent: -115, duration: .6, ease: 'expo.in' }, start)
       .set(letter, { yPercent: 115 }, start + .6)
       .to(letter, { yPercent: 0, duration: .9, ease: 'expo.out' }, start + .6);
   });
+  intro.to(loaderMark, { opacity: 0, duration: .3, ease: 'power1.out' }, 3.025);
   intro.to(loader, { yPercent: -100, duration: 1.3, ease: 'expo.inOut' }, 2.575)
     .call(() => { closed = true; document.body.classList.add('ready'); }, [], 3.025)
-    .call(() => { loader.hidden = true; }, [], 3.875);
+    .call(() => { loader.hidden = true; loaderMark.remove(); }, [], 3.875);
   const order = ['a','d','c','b','e'];
   order.forEach((slot, i) => {
     const photo = document.querySelector('.photo.' + slot);
