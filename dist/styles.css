@@ -278,3 +278,6 @@ body:not(.ready) .hero .photo-inner{translate:0 25%}
 
 .founder .founder-portrait{background:var(--paper);isolation:isolate}
 .founder-portrait img{mix-blend-mode:multiply}
+
+.service-booking{text-decoration:none;width:fit-content;cursor:pointer}
+.service-booking:hover{background:var(--ink);color:var(--paper)}
