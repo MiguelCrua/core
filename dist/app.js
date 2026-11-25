@@ -15,10 +15,22 @@
   const letterPairs = [...letters].map((letter, i) => [letter, overlayLetters[i]]);
   const gsap = window.gsap;
   const ScrollTrigger = window.ScrollTrigger;
+  const initialHash = window.location.hash;
+  const restoreInitialSection = () => {
+    if (!initialHash || initialHash === '#top' || window.location.hash !== initialHash) return;
+    let id;
+    try { id = decodeURIComponent(initialHash.slice(1)); } catch { return; }
+    const target = document.getElementById(id);
+    if (target) {
+      target.scrollIntoView({ behavior: 'instant', block: 'start' });
+      window.ScrollTrigger?.refresh();
+    }
+  };
   const showStatic = () => {
     document.body.classList.add('ready');
     loader.hidden = true;
     loaderMark.remove();
+    requestAnimationFrame(restoreInitialSection);
   };
   if (!gsap || !ScrollTrigger || reduced.matches) { showStatic(); return; }
   gsap.registerPlugin(ScrollTrigger);
@@ -125,6 +137,8 @@
     intro.to(target.querySelectorAll('.motion-char'), { yPercent: 0, opacity: 1,
       duration: .75, ease: 'expo.out', stagger: Number(target.dataset.motionStep) }, 3.025);
   });
+
+  intro.call(restoreInitialSection);
 
   const depths = [10, -14, 12, -8, 16];
   const follow = photos.map(photo => ({
