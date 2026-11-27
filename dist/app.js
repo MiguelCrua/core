@@ -34,6 +34,7 @@
   };
   if (!gsap || !ScrollTrigger || reduced.matches) { showStatic(); return; }
   gsap.registerPlugin(ScrollTrigger);
+  document.fonts?.ready.then(() => ScrollTrigger.refresh());
   document.body.classList.add('gsap-motion');
   let closed = false;
   // Keep the complete text accessible; split only its decorative visual copy.

@@ -1,0 +1,17 @@
+@font-face{font-family:'Arya';font-style:normal;font-weight:700;font-display:swap;src:url('assets/fonts/arya-bold.ttf') format('truetype')}
+@font-face{font-family:'Inter';font-style:normal;font-weight:400;font-display:swap;src:url('assets/fonts/inter-regular.ttf') format('truetype')}
+body,input,button,textarea,select{font-family:'Inter',Arial,sans-serif;font-weight:400}
+h1,h2,h3,.service h3,#workbook-dialog-title{font-family:'Arya',sans-serif;font-weight:700;letter-spacing:0;line-height:1.1}
+.hero-caption,.footer-socials a,.workbook-cover-bottom{font-family:'Inter',Arial,sans-serif;font-weight:400}
+.copy{line-height:1.5!important}
+/* Keep the social links aligned with both edges of the CORE wordmark. */
+.footer-inner{--core-wordmark-width:599.758px}
+.footer-logo{width:var(--core-wordmark-width)}
+.footer-socials{width:var(--core-wordmark-width);justify-content:space-between;gap:8px}
+.footer-socials a{font-family:'Arya',sans-serif;font-weight:700;white-space:nowrap}
+@media(max-width:900px){.footer-inner{--core-wordmark-width:420px}}
+@media(max-width:600px){.footer-inner{--core-wordmark-width:min(65vw,300px)}.footer-socials{gap:6px}.footer-socials a{font-size:clamp(12px,3.3vw,16px)}}
+@font-face{font-family:'Arya';font-style:normal;font-weight:400;font-display:swap;src:url('assets/fonts/arya-regular.ttf') format('truetype')}
+.hero-caption{font-family:'Arya',sans-serif;font-weight:400}
+.footer-socials{justify-content:flex-end;gap:32px}
+@media(max-width:600px){.footer-socials{gap:16px}}
