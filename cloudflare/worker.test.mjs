@@ -22,3 +22,14 @@ test('PDF requires confirmed storage', async () => {
  assert.equal(result.status,200);assert.equal(await result.text(),'%PDF-test');assert.equal(result.headers.get('Cache-Control'),'no-store');
  } finally {globalThis.fetch=original;}
 });
+test('native form returns PDF attachment only after storing contact', async () => {
+ const original = globalThis.fetch;
+ try {
+  const req = () => new Request('https://core.example/api/workbook', {method:'POST', headers:{Origin:'https://core.example','Content-Type':'application/x-www-form-urlencoded'}, body:new URLSearchParams({name:'Teste Android',email:'android@example.com'})});
+  globalThis.fetch = async (_url, options) => {const lead=JSON.parse(options.body);assert.equal(lead.email,'android@example.com');return Response.json({ok:true});};
+  const result=await worker.fetch(req(),env);
+  assert.equal(result.status,200);assert.equal(result.headers.get('Content-Type'),'application/pdf');assert.match(result.headers.get('Content-Disposition'),/^attachment;/);assert.equal(await result.text(),'%PDF-test');
+  globalThis.fetch=async()=>Response.json({ok:false});
+  assert.equal((await worker.fetch(req(),env)).status,503);
+ } finally {globalThis.fetch=original;}
+});

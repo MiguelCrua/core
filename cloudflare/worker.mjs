@@ -9,7 +9,9 @@ export default {
     if (url.pathname !== '/api/workbook') return env.ASSETS.fetch(request);
     if (request.method !== 'POST') return json(405, 'Método não permitido.');
     if (request.headers.get('Origin') !== url.origin) return json(403, 'Pedido não autorizado.');
-    if (!request.headers.get('Content-Type')?.startsWith('application/json')) return json(415, 'Pedido inválido.');
+    const contentType = request.headers.get('Content-Type') || '';
+    const nativeForm = contentType.startsWith('application/x-www-form-urlencoded');
+    if (!nativeForm && !contentType.startsWith('application/json')) return json(415, 'Pedido inválido.');
     if (!env.CORE_SHEETS_WEBHOOK || !env.CORE_SHEETS_SECRET) return json(503, 'O download estará disponível em breve.');
     if (env.WORKBOOK_LIMITER) {
       const { success } = await env.WORKBOOK_LIMITER.limit({ key: request.headers.get('CF-Connecting-IP') || 'unknown' });
@@ -28,7 +30,10 @@ export default {
       const bytes = new Uint8Array(size); let offset = 0;
       for (const chunk of chunks) { bytes.set(chunk, offset); offset += chunk.length; }
       let data;
-      try { data = JSON.parse(new TextDecoder().decode(bytes)); } catch { return json(400, 'Verifica os dados introduzidos.'); }
+      try {
+        const body = new TextDecoder().decode(bytes);
+        data = nativeForm ? Object.fromEntries(new URLSearchParams(body)) : JSON.parse(body);
+      } catch { return json(400, 'Verifica os dados introduzidos.'); }
       const name = typeof data?.name === 'string' ? data.name.trim() : '';
       const email = typeof data?.email === 'string' ? data.email.trim().toLowerCase() : '';
       if (name.length < 2 || name.length > 120 || email.length > 254 || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return json(400, 'Preenche o nome e um email válido.');
@@ -41,7 +46,7 @@ export default {
       });
       if (!saved.ok || (await saved.json()).ok !== true) return json(503, 'Não foi possível guardar o pedido. Tenta novamente.');
       return new Response(pdf.body, { headers: {
-        'Content-Type': 'application/pdf', 'Content-Disposition': 'attachment; filename="Core - Workbook.pdf"',
+        'Content-Type': 'application/pdf', 'Content-Disposition': 'attachment; filename="CORE - Workbook.pdf"',
         'Cache-Control': 'no-store', 'X-Content-Type-Options': 'nosniff'
       } });
     } catch { return json(503, 'Não foi possível concluir o pedido. Tenta novamente.'); }
