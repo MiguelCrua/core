@@ -22,14 +22,15 @@
   });
   dialog.querySelector('.workbook-close').addEventListener('click', () => dialog.close());
   dialog.addEventListener('click', event => { if (event.target === dialog) dialog.close(); });
-  retry.addEventListener('click', beginDownload);
+
   form.addEventListener('submit', async event => {
     event.preventDefault();
     if (busy || !form.reportValidity()) return;
     busy = true;
     submit.disabled = true;
     submit.textContent = 'A preparar…';
-    status.textContent = '';
+    status.textContent = 'A guardar os teus dados e a preparar o PDF…';
+    retry.hidden = true;
     try {
       const response = await fetch('/api/workbook', {
         method: 'POST', headers: { 'Content-Type': 'application/json' },
@@ -43,9 +44,12 @@
       const blob = await response.blob();
       if (downloadUrl) URL.revokeObjectURL(downloadUrl);
       downloadUrl = URL.createObjectURL(blob);
-      beginDownload();
-      status.textContent = 'Obrigado! O teu Workbook está pronto. Se o download não começou, usa o botão abaixo.';
+      retry.href = downloadUrl;
       retry.hidden = false;
+      status.textContent = 'O teu Workbook está pronto. Toca em “Descarregar PDF” para guardar ou abrir o ficheiro.';
+      // Mobile browsers can block automatic downloads after an asynchronous request.
+      // Keep a real, user-activated download link available in every browser.
+      if (!matchMedia('(pointer: coarse)').matches) beginDownload();
     } catch (error) {
       status.textContent = error.message || 'Não foi possível concluir o pedido. Tenta novamente.';
     } finally {
